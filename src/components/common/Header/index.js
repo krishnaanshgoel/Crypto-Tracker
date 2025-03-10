@@ -1,5 +1,7 @@
 import React from 'react'
 import "./style.css"
+import Drawer from './drawer'
+import Button from '../Button'
 
 const Header = () => {
   return (
@@ -16,9 +18,12 @@ const Header = () => {
             <p className="link">Watchlist</p>
             </a>
             <a href="/">
-            <p className="link">Dashboard</p>
+            <Button text="Dashboard" onClick={()=>{}} outlined={false}/>
             </a>
         </div>
+        <div className="mobile-drawer">
+            <Drawer />
+            </div>
     </div>
   )
 }
