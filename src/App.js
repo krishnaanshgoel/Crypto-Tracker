@@ -1,12 +1,24 @@
-import Header from './components/common/Header';
-import MainComponent from './components/LandingPage/MainComponent';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Coin from './pages/Coin';
+import { Compare } from '@mui/icons-material';
+import Watchlist from './pages/Watchlist';
 
 function App() {
   return (
-    <div>
-   <Header></Header>
-   <MainComponent />
+    <div className="App">
+      <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/coin/:id" element={<Coin />} />
+      <Route path="/compare" element={<Compare />} />
+      <Route path="/watchlist" element={<Watchlist />} />
+      </Routes>
+      </BrowserRouter>
+
    </div>
   ); 
 }

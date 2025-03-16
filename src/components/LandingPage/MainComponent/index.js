@@ -8,17 +8,42 @@ const MainComponent = () => {
   return (
     <div className="flex-info">
         <div className="left-com">
-            <h1 className="track-crypto-h">Track Crypto</h1>
-            <h1 className="real-time-h">Real Time.</h1>
-            <p className="text-para">Track Crypto through a public api in real time. Visit the dashboard to do so!
-            </p>
-            <div className="btn-flex">
+            <motion.h1
+             initial={{opacity:0,y:50}}
+             animate={{opacity:1,y:0}}
+             transition={{duration:0.5}}
+            className="track-crypto-h">Track Crypto</motion.h1>
+            <motion.h1 
+             initial={{opacity:0,y:50}}
+             animate={{opacity:1,y:0}}
+             transition={{duration:0.5, delay:0.5}}
+            className="real-time-h">Real Time.</motion.h1>
+            <motion.p
+             initial={{opacity:0,y:50}}
+             animate={{opacity:1,y:0}}
+             transition={{duration:0.5,delay:0.75}}            
+            className="text-para">Track Crypto through a public api in real time. Visit the dashboard to do so!
+            </motion.p>
+            <motion.div 
+             initial={{opacity:0,x:50}}
+             animate={{opacity:1,x:0}}
+             transition={{duration:0.5,delay:0.5}}             
+            className="btn-flex">
                 <Button text="Dashboard" outlined={false} onClick={()=>{}}></Button>
                 <Button text="Share App" outlined={true} onClick={()=>{}}></Button>
-            </div>
+            </motion.div>
         </div>
         <div className="right-com">
-          <img src={iphone} className="iphone"></img>
+          <motion.img
+             initial={{y:-10}}
+             animate={{y:10}}
+             transition={{
+              type:"smooth",
+              repeatType:"mirror",
+              repeat:Infinity,
+              duration:2
+             }}           
+          src={iphone} className="iphone"></motion.img>
           <img src={gradient} className="gradient"></img>
         </div>
     </div>
