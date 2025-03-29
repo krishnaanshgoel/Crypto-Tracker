@@ -2,24 +2,51 @@ import React, { useState ,useEffect} from 'react'
 import Header from '../components/common/Header'
 import Tabscomponent from '../components/Dashboard/Tabs'
 import axios from 'axios';
+import Search from '../components/Dashboard/Search';
+import PaginationC from '../components/Dashboard/Pagination';
+import Loader from '../components/common/Loader';
+import BacktoTop from '../components/common/BacktoTop';
 
 function Dashboard() {
   const [coins,setCoins]=useState([]);
+  const [search,setSearch]=useState("");
+  const [page, setPage] = useState(1);
+  const [paginatedcoins,setPaginatedCoins]=useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(()=>{
-     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
-     .then((res)=>{
+    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
+    .then((res)=>{
       setCoins(res.data);
-     }).catch((err)=>{
+      setPaginatedCoins(res.data.slice(0,10));
+      setLoading(false);
+    }).catch((err)=>{
       console.log(err)
-
-     })
+      setLoading(false);
+    })
   },[]);
+  const handleChange = (event, value) => {
+    setPage(value);
+    var pre=(value-1)*10;
+    setPaginatedCoins(coins.slice(pre,pre+10));
+  };
+
+  const onSearchChange=(e)=>{
+    setSearch(e.target.value)
+  }
+
+  var filteredCoins=coins.filter((item)=>item.name.toLowerCase().includes(search.toLowerCase()) || item.symbol.toLowerCase().includes(search.toLowerCase()));
   
   return (
-    <div>
-      <Header />
-      <Tabscomponent coins={coins}/>
-    </div>
+    <>
+    <Header />
+    <BacktoTop />
+    {loading?<Loader />:<div>
+      
+      <Search search={search} onSearchChange={onSearchChange} />
+      <Tabscomponent coins={search?filteredCoins:paginatedcoins}  setSearch={setSearch}/>
+      {!search && <PaginationC page={page} handleChange={handleChange}/>}
+    </div>}
+    </>
   )
 }
 

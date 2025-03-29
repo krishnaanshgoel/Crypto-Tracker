@@ -1,0 +1,14 @@
+.loader{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%; 
+    width:100%;
+    background-color: var(--black);
+    position:absolute;
+    color:var(--blue);
+    z-index: 1000;
+    position:fixed;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}

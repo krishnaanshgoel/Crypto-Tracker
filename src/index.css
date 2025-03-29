@@ -14,7 +14,9 @@ body {
   color:var(--white);
   background-color:var(--black)
 }
-
+html{
+  scroll-behavior: smooth;
+}
 a{
   text-decoration:none !important;
   color:var(--white);
@@ -48,4 +50,13 @@ img {
   -khtml-user-drag: none; 
   -moz-user-drag: none; 
   -o-user-drag: none; 
+}
+
+.grey-wrapper{
+  display:block;
+  width:90%;
+  background-color:var(--darkgrey);
+  border-radius:0.8rem;
+  margin:1.5rem auto;
+  padding:0rem 1rem;
 }

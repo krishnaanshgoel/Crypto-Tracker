@@ -1,0 +1,9 @@
+.coin-info-heading{
+  padding-top: 1rem;
+  cursor:pointer;
+}
+
+.coin-info-desc{
+    padding-bottom: 1rem;
+    cursor:pointer;
+}

@@ -7,9 +7,11 @@ import TabPanel from '@mui/lab/TabPanel';
 import Grid from '../Grid';
 import "./style.css"
 import List from '../List';
+import Button from '../../common/Button';
 
-function Tabscomponent({coins}) {
-    const [value, setValue] = React.useState('2');
+function Tabscomponent({coins,setSearch}) {
+    const [value, setValue] = React.useState('1');
+
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
@@ -38,18 +40,44 @@ function Tabscomponent({coins}) {
             <Tab label="List" value="2" sx={style} />
           </TabList>
         <TabPanel value="1">
-            <div className="grid-flex">{coins.map((coin,i)=>{
+            <div className="grid-flex">{coins.length>0?(coins.map((coin,i)=>{
                return(
                 <Grid coin={coin} key={i}></Grid>
                )
-            })}</div>
+            })):(            <div>
+              <h1 style={{ textAlign: "center" }}>
+                Sorry, Couldn't find the coin you're looking for 😞
+              </h1>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "2rem",
+                }}
+              >
+                <Button text="Clear Search" onClick={() => setSearch("")} />
+              </div>
+            </div>)}</div>
         </TabPanel>
         <TabPanel value="2">
-            <table className="list-table">{coins.map((coin,i)=>{
+            <table className="list-table">{coins.length>0?(coins.map((coin,i)=>{
                 return(
                     <List coin={coin} key={i} />
                 )
-            })}</table>
+            })):(            <div>
+              <h1 style={{ textAlign: "center" }}>
+                Sorry, Couldn't find the coin you're looking for 😞
+              </h1>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "2rem",
+                }}
+              >
+                <Button text="Clear Search" onClick={() => setSearch("")} />
+              </div>
+            </div>)}</table>
         </TabPanel>
       </TabContext>
     </ThemeProvider>
