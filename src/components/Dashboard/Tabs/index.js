@@ -42,7 +42,7 @@ function Tabscomponent({coins,setSearch}) {
         <TabPanel value="1">
             <div className="grid-flex">{coins.length>0?(coins.map((coin,i)=>{
                return(
-                <Grid coin={coin} key={i}></Grid>
+                <Grid coin={coin} key={i} delay={(i%4)*0.2}></Grid>
                )
             })):(            <div>
               <h1 style={{ textAlign: "center" }}>
@@ -62,7 +62,7 @@ function Tabscomponent({coins,setSearch}) {
         <TabPanel value="2">
             <table className="list-table">{coins.length>0?(coins.map((coin,i)=>{
                 return(
-                    <List coin={coin} key={i} />
+                    <List coin={coin} key={i} delay={(i % 8) * 0.2}/>
                 )
             })):(            <div>
               <h1 style={{ textAlign: "center" }}>

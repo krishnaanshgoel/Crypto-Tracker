@@ -1,4 +1,4 @@
-export const coinObject = (setCoin,data) => {
+export const coinObject = (data,setCoin) => {
     setCoin({
       id: data.id,
       name: data.name,
